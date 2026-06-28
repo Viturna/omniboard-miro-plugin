@@ -4,35 +4,44 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://miro.com/app/static/sdk/v2/miro.js"></script>
-    <title>Omniboard Miro Plugin</title>
+    <link rel="stylesheet" href="/src/assets/style.css" />
+    <title data-i18n="plugin_title">Omniboard Miro Plugin</title>
   </head>
   <body>
-    
     <div id="root">
-      <div class="grid wrapper">
-        <div class="cs1 ce12">
-          <img src="/src/assets/congratulations.png" alt="" />
-        </div>
-        <div class="cs1 ce12">
-          <h1>Congratulations!</h1>
-          <p>You've just created your first Miro app!</p>
-          <p>
-            To explore more and build your own app, see the Miro Developer
-            Platform documentation.
-          </p>
-        </div>
-        <div class="cs1 ce12">
-          <a
-            class="button button-primary"
-            target="_blank"
-            href="https://developers.miro.com"
-          >
-            Read the documentation
-          </a>
-        </div>
+      <svg class="logo" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="55.5042" y="71.4951" width="334" height="334" rx="17.5" fill="#EFEFEF" stroke="black" stroke-width="15"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M446.947 263.69L408.31 225.047C407.026 223.761 405.5 222.742 403.821 222.047C402.143 221.351 400.343 220.993 398.526 220.993C396.709 220.993 394.909 221.351 393.23 222.047C391.552 222.742 390.026 223.761 388.741 225.047L239.056 374.734C237.766 376.015 236.743 377.538 236.047 379.217C235.35 380.896 234.995 382.697 235.001 384.514V423.158C235.001 426.827 236.458 430.346 239.053 432.941C241.648 435.535 245.167 436.993 248.836 436.993H287.482C289.299 436.999 291.1 436.643 292.779 435.947C294.458 435.251 295.982 434.228 297.262 432.938L446.947 283.258C448.232 281.974 449.251 280.448 449.947 278.77C450.643 277.091 451 275.291 451 273.474C451 271.657 450.643 269.858 449.947 268.179C449.251 266.5 448.232 264.975 446.947 263.69ZM251.699 381.652L367.988 265.368L382.42 279.8L391.5 288.88L396.853 294.231L405.933 303.311L289.644 419.587L280.564 410.507L275.216 405.16L266.131 396.075L251.699 381.652ZM248.836 398.349L273.646 423.158H248.836V398.349ZM416.413 294.231L377.768 255.588L398.522 234.835L437.167 273.47L416.413 294.231Z" fill="black"/>
+        <path d="M248.836 398.349L273.646 423.158H248.836V398.349Z" fill="#EFEFEF"/>
+        <path d="M416.413 294.231L377.768 255.588L398.522 234.835L437.167 273.47L416.413 294.231Z" fill="#DDDDDD"/>
+        <path d="M367.988 265.368L251.699 381.652L266.131 396.075L275.216 405.16L280.564 410.507L289.644 419.587L405.933 303.311L396.853 294.231L391.5 288.88L382.42 279.8L367.988 265.368Z" fill="#EFEFEF"/>
+        <path d="M112 215.361C126.7 175.448 164.923 113.38 200.205 184.406C235.487 255.432 317.401 206.714 333 174.739" stroke="black" stroke-width="24" stroke-linecap="round"/>
+      </svg>
+      
+      <h2 data-i18n="import_title">Import from Omniboard</h2>
+      <p data-i18n="import_desc">Select your Omniboard export file (.json) to import your elements into Miro.</p>
+
+      <div class="upload-area" id="drop-zone">
+        <svg class="upload-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="17 8 12 3 7 8"></polyline>
+          <line x1="12" y1="3" x2="12" y2="15"></line>
+        </svg>
+        <div class="upload-text" data-i18n="import_drag">Click or drag .json file here</div>
+        <input type="file" id="file-input" accept=".json">
       </div>
+
+      <div id="status"></div>
+      
+      <div style="margin-top: 24px; width: 100%; border-top: 1px solid #E5E5E5; padding-top: 24px;">
+        <h2 data-i18n="export_title">Export to Omniboard</h2>
+        <p data-i18n="export_desc">Export all items from the current Miro board to an Omniboard .json file.</p>
+        <button id="export-btn" style="background: #1F1F1F; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; font-size: 14px;" data-i18n="export_btn">Export Board</button>
+      </div>
+      
+      <div id="export-status"></div>
     </div>
-    
+
     <script type="module" src="/src/app.ts"></script>
   </body>
 </html>
